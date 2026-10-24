@@ -1,11 +1,11 @@
 services:
   app:
-    image: ghcr.io/twin/gatus:stable
+    build:
+      context: .
     restart: unless-stopped
     environment:
       TEST_VAR: true
     volumes:
-      - ./config:/config/
       - gatus-data:/data/
 
 volumes:
