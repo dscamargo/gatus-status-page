@@ -1,0 +1,8 @@
+services:
+  app:
+    image: ghcr.io/twin/gatus:stable
+    restart: unless-stopped
+    environment:
+      TEST_VAR: true
+    volumes:
+      - ./config:/config/

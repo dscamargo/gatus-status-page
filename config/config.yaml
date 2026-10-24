@@ -1,0 +1,52 @@
+# x-slack-alerts: &slack-alerts
+#   alerts:
+#     - type: slack
+#       description: "healthcheck failed 3 times in a row"
+#       send-on-resolved: true
+#     - type: slack
+#       failure-threshold: 5
+#       description: "healthcheck failed 5 times in a row"
+#       send-on-resolved: true
+
+# x-discord-alerts: &discord-alerts
+#   alerts:
+#     - type: discord
+#       description: "healthcheck failed 3 times in a row"
+#       send-on-resolved: true
+#     - type: discord
+#       failure-threshold: 5
+#       description: "healthcheck failed 5 times in a row"
+#       send-on-resolved: true
+
+# x-all-alerts: &all-alerts
+#   alerts:
+#     - type: slack
+#       description: "healthcheck failed 3 times in a row"
+#       send-on-resolved: true
+#     - type: slack
+#       failure-threshold: 5
+#       description: "healthcheck failed 5 times in a row"
+#       send-on-resolved: true
+#     - type: discord
+#       description: "healthcheck failed 3 times in a row"
+#       send-on-resolved: true
+#     - type: discord
+#       failure-threshold: 5
+#       description: "healthcheck failed 5 times in a row"
+#       send-on-resolved: true
+
+endpoints:
+  - name: Teste
+    group: Google
+    url: "https://www.google.com.br"
+    interval: 1m
+    # <<: *all-alerts
+    conditions:
+      - "[STATUS] == 200"
+      - "[CERTIFICATE_EXPIRATION] > 48h"
+
+# alerting:
+#   slack:
+#     webhook-url: ${SLACK_WEBHOOK_URL}
+#   discord:
+#     webhook-url: ${DISCORD_WEBHOOK_URL}
